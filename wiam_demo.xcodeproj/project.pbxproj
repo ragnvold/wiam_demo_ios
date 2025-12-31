@@ -6,20 +6,71 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		18E7047E2F05BC7C00892854 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18E7047D2F05BC7500892854 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18E7046F2F05B82600892854 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18E704072F053EB000892854 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18E7040E2F053EB000892854;
+			remoteInfo = wiam_demo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		18E7040F2F053EB000892854 /* wiam_demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wiam_demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18E7046B2F05B82600892854 /* wiam_demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wiam_demoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18E7047D2F05BC7500892854 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		18E704782F05B85F00892854 /* Exceptions for "wiam_demo" folder in "wiam_demoTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Features/LoanCalculator/Tests/LoanCalculatorReducerTests.swift,
+				Features/LoanCalculator/Tests/LoanCalculatorTests.swift,
+			);
+			target = 18E7046A2F05B82600892854 /* wiam_demoTests */;
+		};
+		18E7047B2F05B87A00892854 /* Exceptions for "wiam_demo" folder in "wiam_demo" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Features/LoanCalculator/Tests/LoanCalculatorReducerTests.swift,
+				Features/LoanCalculator/Tests/LoanCalculatorTests.swift,
+			);
+			target = 18E7040E2F053EB000892854 /* wiam_demo */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		18E704112F053EB000892854 /* wiam_demo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				18E7047B2F05B87A00892854 /* Exceptions for "wiam_demo" folder in "wiam_demo" target */,
+				18E704782F05B85F00892854 /* Exceptions for "wiam_demo" folder in "wiam_demoTests" target */,
+			);
 			path = wiam_demo;
+			sourceTree = "<group>";
+		};
+		18E7046C2F05B82600892854 /* wiam_demoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = wiam_demoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		18E7040C2F053EB000892854 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18E704682F05B82600892854 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,7 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				18E704112F053EB000892854 /* wiam_demo */,
+				18E7046C2F05B82600892854 /* wiam_demoTests */,
 				18E704102F053EB000892854 /* Products */,
+				18E7047D2F05BC7500892854 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				18E7040F2F053EB000892854 /* wiam_demo.app */,
+				18E7046B2F05B82600892854 /* wiam_demoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +124,29 @@
 			productReference = 18E7040F2F053EB000892854 /* wiam_demo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		18E7046A2F05B82600892854 /* wiam_demoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18E704712F05B82600892854 /* Build configuration list for PBXNativeTarget "wiam_demoTests" */;
+			buildPhases = (
+				18E704672F05B82600892854 /* Sources */,
+				18E704682F05B82600892854 /* Frameworks */,
+				18E704692F05B82600892854 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18E704702F05B82600892854 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				18E7046C2F05B82600892854 /* wiam_demoTests */,
+			);
+			name = wiam_demoTests;
+			packageProductDependencies = (
+			);
+			productName = wiam_demoTests;
+			productReference = 18E7046B2F05B82600892854 /* wiam_demoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +159,10 @@
 				TargetAttributes = {
 					18E7040E2F053EB000892854 = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					18E7046A2F05B82600892854 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 18E7040E2F053EB000892854;
 					};
 				};
 			};
@@ -100,12 +181,21 @@
 			projectRoot = "";
 			targets = (
 				18E7040E2F053EB000892854 /* wiam_demo */,
+				18E7046A2F05B82600892854 /* wiam_demoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		18E7040D2F053EB000892854 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18E7047E2F05BC7C00892854 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18E704692F05B82600892854 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +212,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18E704672F05B82600892854 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18E704702F05B82600892854 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18E7040E2F053EB000892854 /* wiam_demo */;
+			targetProxy = 18E7046F2F05B82600892854 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		18E704182F053EB100892854 /* Debug */ = {
@@ -306,6 +411,46 @@
 			};
 			name = Release;
 		};
+		18E704722F05B82600892854 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nparmenov.wiam-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wiam_demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/wiam_demo";
+			};
+			name = Debug;
+		};
+		18E704732F05B82600892854 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nparmenov.wiam-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wiam_demo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/wiam_demo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,6 +468,15 @@
 			buildConfigurations = (
 				18E7041B2F053EB100892854 /* Debug */,
 				18E7041C2F053EB100892854 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18E704712F05B82600892854 /* Build configuration list for PBXNativeTarget "wiam_demoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18E704722F05B82600892854 /* Debug */,
+				18E704732F05B82600892854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
