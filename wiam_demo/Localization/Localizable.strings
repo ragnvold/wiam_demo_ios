@@ -1,0 +1,38 @@
+//
+//  Localizable.strings
+//  wiam_demo
+//
+//  Created by Nikita Parmenov on 03.01.2026.
+//
+
+/* Navigation */
+"loan_calculator_title" = "Loan Calculator";
+
+/* Sections */
+"section_data" = "Data";
+"section_summary" = "Summary";
+
+/* Amount */
+"amount_title" = "Amount";
+"amount_accessibility" = "Loan amount";
+
+/* Term */
+"term_title" = "Term";
+"term_days_format" = "%d days";
+"term_days_short_format" = "%dd";
+"term_accessibility" = "Loan term";
+
+/* Summary */
+"summary_apr" = "APR";
+"summary_total_repayment" = "Total repayment";
+"summary_repay_date" = "Repay date";
+
+/* Submit */
+"submit_application" = "Submit application";
+
+/* Alerts */
+"alert_success_title" = "Application submitted";
+"alert_failure_title" = "Submission failed";
+"alert_ok" = "OK";
+
+"alert_success_message_format" = "ID: %d\nAmount: %@\nTerm: %d days\nTotal: %@";

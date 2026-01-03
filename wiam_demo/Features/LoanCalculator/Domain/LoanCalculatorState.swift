@@ -30,13 +30,25 @@ struct LoanTerms: Equatable, Codable {
 struct LoanCalculatorConfig: Equatable {
     var amountRange: ClosedRange<Decimal>
     var allowedPeriodsDays: [Int]
-    var aprPercent: Decimal
+    
+    var aprByPeriodDays: [Int: Decimal]
+    var defaultAprPercent: Decimal
 
     static let `default` = LoanCalculatorConfig(
         amountRange: 5_000...50_000,
         allowedPeriodsDays: [7, 14, 21, 28],
-        aprPercent: 15
+        aprByPeriodDays: [
+            7: 7.5,
+            14: 15,
+            21: 22.5,
+            28: 30
+        ],
+        defaultAprPercent: 15
     )
+    
+    func aprPercent(for periodDays: Int) -> Decimal {
+        (aprByPeriodDays[periodDays] ?? defaultAprPercent).rounded(scale: 2)
+    }
 }
 
 struct LoanComputed: Equatable {

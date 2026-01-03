@@ -44,10 +44,10 @@ enum LoanCalculatorReducer {
             }
             return []
 
-        case ._recalculate:
+        case ._recalculate:            
             state.computed = LoanCalculator.compute(
                 terms: state.terms,
-                aprPercent: state.config.aprPercent,
+                config: state.config,
                 now: env.now(),
                 calendar: env.calendar
             )

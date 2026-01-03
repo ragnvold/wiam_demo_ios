@@ -8,21 +8,18 @@
 import Foundation
 
 enum LoanCalculator {
-    /// Interest model: APR prorated by days.
-    /// total = amount + amount * (apr/100) * (days/365)
     static func compute(
         terms: LoanTerms,
-        aprPercent: Decimal,
+        config: LoanCalculatorConfig,
         now: Date,
         calendar: Calendar
     ) -> LoanComputed {
 
+        let periodRatePercent = config.aprPercent(for: terms.periodDays)
         let amount = terms.amount
-        let apr = aprPercent / 100
-        let days = Decimal(terms.periodDays)
-        let yearDays = Decimal(365)
+        let rate = periodRatePercent / 100
 
-        let interest = (amount * apr * (days / yearDays)).rounded(scale: 2)
+        let interest = (amount * rate).rounded(scale: 2)
         let total = (amount + interest).rounded(scale: 2)
 
         let repayDate = calendar.date(byAdding: .day, value: terms.periodDays, to: now) ?? now

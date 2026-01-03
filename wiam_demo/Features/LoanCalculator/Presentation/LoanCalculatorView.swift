@@ -16,12 +16,11 @@ struct LoanCalculatorView: View {
     var body: some View {
         NavigationStack {
             Form {
-                amountSection
-                periodSection
+                amountAndTermSection
                 summarySection
                 submitSection
             }
-            .navigationTitle("Loan Calculator")
+            .navigationTitle(Strings.loanCalculatorTitle)
         }
         .onAppear {
             syncLocalFromState()
@@ -37,10 +36,10 @@ struct LoanCalculatorView: View {
 
     // MARK: - Sections
 
-    private var amountSection: some View {
-        Section("Amount") {
+    private var amountSegment: some View {
+        VStack(spacing: 8) {
             HStack {
-                Text("Amount")
+                Text(Strings.amountTitle)
                 Spacer()
                 Text(formatMoney(store.state.terms.amount))
                     .foregroundStyle(.secondary)
@@ -58,7 +57,7 @@ struct LoanCalculatorView: View {
                 in: amountRangeDouble,
                 step: 100
             )
-            .accessibilityLabel("Loan amount")
+            .accessibilityLabel(Strings.amountAccessibility)
 
             HStack {
                 Text(formatMoney(Decimal(amountRangeDouble.lowerBound)))
@@ -72,12 +71,12 @@ struct LoanCalculatorView: View {
         }
     }
 
-    private var periodSection: some View {
-        Section("Term") {
+    private var termSegment: some View {
+        VStack(spacing: 8) {
             HStack {
-                Text("Term")
+                Text(Strings.termTitle)
                 Spacer()
-                Text("\(store.state.terms.periodDays) days")
+                Text(Strings.termDays(store.state.terms.periodDays))
                     .foregroundStyle(.secondary)
                     .monospacedDigit()
             }
@@ -88,6 +87,7 @@ struct LoanCalculatorView: View {
                     set: { newValue in
                         let rounded = newValue.rounded()
                         periodIndex = rounded
+
                         let idx = Int(rounded)
                         let periods = store.state.config.allowedPeriodsDays
                         guard periods.indices.contains(idx) else { return }
@@ -97,25 +97,40 @@ struct LoanCalculatorView: View {
                 in: 0...Double(max(0, store.state.config.allowedPeriodsDays.count - 1)),
                 step: 1
             )
-            .accessibilityLabel("Loan term")
+            .accessibilityLabel(Strings.termAccessibility)
 
             HStack {
-                Text("\(store.state.config.allowedPeriodsDays.first ?? 0)d")
+                Text(Strings.termDaysShort(store.state.config.allowedPeriodsDays.first ?? 0))
                     .foregroundStyle(.secondary)
                     .font(.footnote)
                 Spacer()
-                Text("\(store.state.config.allowedPeriodsDays.last ?? 0)d")
+                Text(Strings.termDaysShort(store.state.config.allowedPeriodsDays.last ?? 0))
                     .foregroundStyle(.secondary)
                     .font(.footnote)
             }
         }
     }
 
+    private var amountAndTermSection: some View {
+        Section(Strings.sectionData) {
+            GroupBox {
+                VStack(spacing: 16) {
+                    amountSegment
+                    Divider()
+                    termSegment
+                }
+                .padding(.vertical, 8)
+            }
+        }
+    }
+
     private var summarySection: some View {
-        Section("Summary") {
-            summaryRow(title: "APR", value: formatPercent(store.state.config.aprPercent))
-            summaryRow(title: "Total repayment", value: formatMoney(store.state.computed.totalRepayment))
-            summaryRow(title: "Repay date", value: formatDate(store.state.computed.repayDate))
+        Section(Strings.sectionSummary) {
+            let apr = store.state.config.aprPercent(for: store.state.terms.periodDays)
+            
+            summaryRow(title: Strings.summaryApr, value: formatPercent(apr))
+            summaryRow(title: Strings.summaryTotalRepayment, value: formatMoney(store.state.computed.totalRepayment))
+            summaryRow(title: Strings.summaryRepayDate, value: formatDate(store.state.computed.repayDate))
         }
     }
 
@@ -129,7 +144,7 @@ struct LoanCalculatorView: View {
                     if isLoading {
                         ProgressView()
                     } else {
-                        Text("Submit application")
+                        Text(Strings.submitApplication)
                     }
                     Spacer()
                 }
@@ -147,7 +162,7 @@ struct LoanCalculatorView: View {
                 }
             )
         ) {
-            Button("OK") {
+            Button(Strings.alertOk) {
                 store.dispatch(.messageDismissed)
             }
         } message: {
@@ -174,9 +189,9 @@ struct LoanCalculatorView: View {
     private var alertTitle: String {
         switch store.state.ui {
         case .submittedSuccess:
-            return "Application submitted"
+            return Strings.alertSuccessTitle
         case .submittedFailure:
-            return "Submission failed"
+            return Strings.alertFailureTitle
         default:
             return ""
         }
@@ -185,7 +200,12 @@ struct LoanCalculatorView: View {
     private var alertMessage: String {
         switch store.state.ui {
         case .submittedSuccess(let response):
-            return "ID: \(response.id)\nAmount: \(formatMoney(response.amount))\nTerm: \(response.period) days\nTotal: \(formatMoney(response.totalRepayment))"
+            return Strings.alertSuccessMessage(
+                id: response.id,
+                amount: formatMoney(response.amount),
+                term: response.period,
+                total: formatMoney(response.totalRepayment)
+            )
         case .submittedFailure(let message):
             return message
         default:
@@ -234,8 +254,9 @@ struct LoanCalculatorView: View {
 private let percentFormatter: NumberFormatter = {
     let f = NumberFormatter()
     f.numberStyle = .percent
-    f.maximumFractionDigits = 0
     f.multiplier = 1
+    f.minimumFractionDigits = 0
+    f.maximumFractionDigits = 2
     return f
 }()
 
