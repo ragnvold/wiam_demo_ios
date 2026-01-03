@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182977232F0957C5001982EB /* ios_wiam_demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 182977222F0957C5001982EB /* ios_wiam_demo.mp4 */; };
 		18E7047E2F05BC7C00892854 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 18E7047D2F05BC7500892854 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182977222F0957C5001982EB /* ios_wiam_demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ios_wiam_demo.mp4; sourceTree = "<group>"; };
 		18E7040F2F053EB000892854 /* wiam_demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wiam_demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E7046B2F05B82600892854 /* wiam_demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wiam_demoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E7047D2F05BC7500892854 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				18E7046C2F05B82600892854 /* wiam_demoTests */,
 				18E704102F053EB000892854 /* Products */,
 				18E7047D2F05BC7500892854 /* README.md */,
+				182977222F0957C5001982EB /* ios_wiam_demo.mp4 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182977232F0957C5001982EB /* ios_wiam_demo.mp4 in Resources */,
 				18E7047E2F05BC7C00892854 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
