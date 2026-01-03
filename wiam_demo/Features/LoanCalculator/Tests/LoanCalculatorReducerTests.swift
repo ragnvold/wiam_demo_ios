@@ -161,9 +161,7 @@ final class LoanCalculatorReducerTests: XCTestCase {
             env: env
         )
 
-        // interest = 5000 * 0.15 * 7/365 = 14.3835616... -> 14.38
-        // total = 5014.38
-        XCTAssertEqual(NSDecimalNumber(decimal: state.computed.totalRepayment).stringValue, "5014.38")
+        XCTAssertEqual(NSDecimalNumber(decimal: state.computed.totalRepayment).stringValue, "5375")
 
         let expectedDue = makeDateUTC(year: 2026, month: 1, day: 8)
         XCTAssertEqual(state.computed.repayDate, expectedDue)

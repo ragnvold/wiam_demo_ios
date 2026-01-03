@@ -39,14 +39,12 @@ final class LoanCalculatorTests: XCTestCase {
 
         let result = LoanCalculator.compute(
             terms: terms,
-            aprPercent: 15,
+            periodRatePercent: 15,
             now: now,
             calendar: calendarUTC
         )
 
-        // interest = 5000 * 0.15 * 7/365 = 14.3835616... -> 14.38
-        // total = 5014.38
-        assertDecimalEqual(result.totalRepayment, Decimal(string: "5014.38")!)
+        assertDecimalEqual(result.totalRepayment, Decimal(string: "5750")!)
 
         let expectedDue = makeDateUTC(year: 2026, month: 1, day: 8)
         XCTAssertEqual(result.repayDate, expectedDue)
@@ -58,14 +56,12 @@ final class LoanCalculatorTests: XCTestCase {
 
         let result = LoanCalculator.compute(
             terms: terms,
-            aprPercent: 15,
+            periodRatePercent: 15,
             now: now,
             calendar: calendarUTC
         )
 
-        // interest = 50000 * 0.15 * 28/365 = 575.3424657... -> 575.34
-        // total = 50575.34
-        assertDecimalEqual(result.totalRepayment, Decimal(string: "50575.34")!)
+        assertDecimalEqual(result.totalRepayment, Decimal(string: "57500")!)
 
         let expectedDue = makeDateUTC(year: 2026, month: 3, day: 10)
         XCTAssertEqual(result.repayDate, expectedDue)

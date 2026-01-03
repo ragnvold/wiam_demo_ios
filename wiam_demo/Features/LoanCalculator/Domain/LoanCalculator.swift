@@ -10,12 +10,10 @@ import Foundation
 enum LoanCalculator {
     static func compute(
         terms: LoanTerms,
-        config: LoanCalculatorConfig,
+        periodRatePercent: Decimal,
         now: Date,
         calendar: Calendar
     ) -> LoanComputed {
-
-        let periodRatePercent = config.aprPercent(for: terms.periodDays)
         let amount = terms.amount
         let rate = periodRatePercent / 100
 
