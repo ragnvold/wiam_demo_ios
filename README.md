@@ -20,7 +20,6 @@
 ## Поток данных (UDF)
 
 ```
-
 UI
 ↓ dispatch(Action)
 Reducer (sync)
@@ -32,7 +31,6 @@ Effect (async)
 dispatch(ResultAction)
 ↓
 Reducer
-
 ```
 
 - **State**. Единственный источник истины
@@ -102,9 +100,7 @@ Reducer
 
 ### Все тесты
 ```
-
 ⌘U
-
 ```
 
 ### Через Test Navigator
@@ -153,6 +149,3 @@ Reducer
 
 Не production-код.  
 Осознанный инженерный пример.
-
----
-```
